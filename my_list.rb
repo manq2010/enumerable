@@ -9,4 +9,3 @@ class MyList
     @list = list
   end
 end
-
