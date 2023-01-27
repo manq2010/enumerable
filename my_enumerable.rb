@@ -1,13 +1,17 @@
 module MyEnumerable
   def all?(&block)
-    @list.all?(&block)
+    each { |element| return false unless block.call(element) }
+    true
   end
 
   def any?(&block)
-    @list.any?(&block)
+    each { |element| return true if block.call(element) }
+    false
   end
 
   def filter(&block)
-    @list.select(&block)
+    result = []
+    each { |element| result << element if block.call(element) }
+    result
   end
 end
